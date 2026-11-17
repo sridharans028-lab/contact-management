@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple contact management application built with Spring Boot, JDBC and MySQL.">
+    <title>Connectly | Contact Manager</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-mark">C</div><div><strong>Connectly</strong><span>CONTACT MANAGER</span></div></div>
+        <div class="nav-caption">WORKSPACE</div>
+        <a class="nav-link active" href="#dashboard"><span class="nav-icon">▦</span> Dashboard</a>
+        <a class="nav-link" href="#contacts"><span class="nav-icon">♙</span> All Contacts</a>
+        <div class="sidebar-note"><div class="note-icon">✦</div><strong>Stay connected</strong><p>Keep your important people and details organized in one place.</p></div>
+        <div class="sidebar-footer">CONNECTLY · 2026</div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+        <header class="topbar">
+            <div><div class="eyebrow">WORKSPACE / CONTACTS</div><h1>Contact Management</h1><p class="top-subtitle">A simple space to organize your contacts.</p></div>
+            <div class="user-chip"><div class="user-avatar">A</div><div><strong>Administrator</strong><span>Workspace admin</span></div></div>
+        </header>
+
+        <section class="welcome-banner">
+            <div><div class="banner-kicker">YOUR CONTACT DIRECTORY</div><h2>Everyone, in one place.</h2><p>Add, update and find contact details in a few clicks.</p></div>
+            <div class="banner-art" aria-hidden="true">◎</div>
+        </section>
+
+        <section class="summary-grid" aria-label="Contact statistics">
+            <article class="summary-card"><div class="summary-icon blue">♙</div><div class="summary-label">Total contacts</div><div class="summary-value" id="totalCount">0</div><div class="summary-foot">Saved in your directory</div></article>
+            <article class="summary-card"><div class="summary-icon violet">⌕</div><div class="summary-label">Quick search</div><div class="summary-value">Find</div><div class="summary-foot">Name, phone or email</div></article>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel form-panel" id="contactFormPanel">
+                <div class="panel-heading"><div><div class="section-kicker">CONTACT DETAILS</div><h2 id="formTitle">Add a contact</h2><p>Enter the details below to save a new contact.</p></div><span class="step-badge">01</span></div>
+                <form id="contactForm" novalidate>
+                    <input type="hidden" id="contactId">
+                    <label for="name">Full name</label>
+                    <input id="name" name="name" type="text" maxlength="100" placeholder="e.g. Rahul Kumar" required>
+                    <label for="phone">Phone number</label>
+                    <input id="phone" name="phone" type="tel" maxlength="20" placeholder="e.g. 9876543210" required>
+                    <label for="email">Email address</label>
+                    <input id="email" name="email" type="email" maxlength="120" placeholder="e.g. rahul@example.com" required>
+                    <div class="form-actions"><button class="primary-btn" type="submit" id="saveButton">＋ Save contact</button><button class="text-btn hidden" type="button" id="cancelEdit">Cancel</button></div>
+                    <p class="form-message" id="formMessage" role="status"></p>
+                </form>
+            </article>
+
+            <article class="panel directory-panel" id="contacts">
+                <div class="panel-heading directory-heading"><div><div class="section-kicker">YOUR DIRECTORY</div><h2>All contacts</h2><p>Browse and manage your saved contacts.</p></div><span class="step-badge">02</span></div>
+                <div class="toolbar"><div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search contacts..."></div><span class="result-count" id="resultCount">0 records</span></div>
+                <div class="table-wrap"><table><thead><tr><th>CONTACT</th><th>PHONE</th><th>EMAIL</th><th>ACTIONS</th></tr></thead><tbody id="contactsTable"><tr><td colspan="4" class="empty-cell">Loading contacts...</td></tr></tbody></table></div>
+                <div class="directory-footer"><span id="directoryFooter">Your contact list is up to date.</span><button type="button" class="refresh-btn" id="refreshButton">↻ Refresh</button></div>
+            </article>
+        </section>
+        <footer class="page-footer">© 2026 Connectly Contact Manager <span>Built with Spring Boot · JDBC · MySQL</span></footer>
+    </main>
+</div>
+<script src="/script.js"></script>
+</body>
+</html>
